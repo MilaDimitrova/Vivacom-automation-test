@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -63,10 +64,38 @@ public class DemoAutomation {
         withoutClientPlan.click();
 
 
-        WebElement buyButton = driver.findElement(By.cssSelector("button.btn.btn-success.js-add-to-cart-btn"));
-        buyButton.click();
 
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        WebElement buyButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("button.js-add-to-cart-btn")));
+        jsExecutor.executeScript("arguments[0].scrollIntoView(true);", buyButton);
+        jsExecutor.executeScript("arguments[0].click();", buyButton);
 
+        WebElement continueShoppingButton = wait.until(ExpectedConditions.elementToBeClickable(By.name("vivacom-cart-link-button-continue-shopping")));
+        continueShoppingButton.click();
+
+        WebElement dropdownToggle2 = driver.findElement(By.className("dropdown-toggle"));
+        dropdownToggle2.click();
+        List<WebElement> options2 = driver.findElements(By.className("dropdown"));
+        for (WebElement option : options2) {
+            if (option.getText().equals("Устройства")) {
+                option.click();
+                break;
+            }
+        }
+
+        driver.findElement(By.xpath("//a[@href='/online/bg/shop/devices/listing?navigation=product-category-accessories']")).click();
+
+        List<WebElement> optionIphone = driver.findElements(By.className("custom-checkbox"));
+        if (optionIphone.size() >= 2) {
+            WebElement thirdArrowIcon = optionIphone.get(1);
+            thirdArrowIcon.click();
+        } else {
+            System.out.println("");
+        }
+
+//        WebElement nextBuy = driver.findElement(By.cssSelector("see-more"));
+//        nextBuy.click();
       //  driver.quit();
 
     }
