@@ -1,6 +1,8 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
@@ -41,7 +43,7 @@ public class DemoAutomation {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
 
         List<WebElement> color = driver.findElements(By.className("custom-checkbox"));
-        if (color.size() >= 15) {
+        if (color.size() >= 16) {
             WebElement thirdArrowIcon = color.get(15);
             thirdArrowIcon.click();
         } else {
@@ -52,19 +54,20 @@ public class DemoAutomation {
         driver.findElement(By.xpath("//a[@href='/online/shop/devices/product-category-smart-mobile-phones/apple-iphone-15-plus-128gb-adapter?offer=epc_emj240105094151989465_so_waw240404165038355262']")).click();
 
 
-// dfosd
-//        WebElement subscriptionPlan = driver.findElement(By.id("relatedOfferDiv-epc_bew240105094214030522_so_pvw240404165038210468"));
-//        subscriptionPlan.click();
-//        List<WebElement> planPrice = driver.findElements(By.className("simple-radio-btns-wrapper-label"));
-//        if (!planPrice.isEmpty()) {
-//            WebElement thirdArrowIcon = planPrice.get(0);
-//            thirdArrowIcon.click();
-//        } else {
-//            System.out.println("");
-//        }
+
+        WebElement subscriptionPlan = driver.findElement(By.id("relatedOfferDiv-epc_bew240105094214030522_so_pvw240404165038210468"));
+        subscriptionPlan.click();
+//        WebElement planPrice = driver.findElement(By.name("relatedOfferCashPriceRadioInputName"));
+//        planPrice.click();
+        WebElement withoutClientPlan = driver.findElement(By.id("xSellBtn"));
+        withoutClientPlan.click();
 
 
-       // driver.quit();
+        WebElement buyButton = driver.findElement(By.cssSelector("button.btn.btn-success.js-add-to-cart-btn"));
+        buyButton.click();
+
+
+      //  driver.quit();
 
     }
 
