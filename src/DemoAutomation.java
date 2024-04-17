@@ -94,6 +94,21 @@ public class DemoAutomation {
             System.out.println("");
         }
 
+        List<WebElement> upperPriceAccesories = driver.findElements(By.className("custom-checkbox"));
+        if (upperPriceAccesories.size() >= 14) {
+            WebElement thirdArrowIcon = upperPriceAccesories.get(13);
+            thirdArrowIcon.click();
+        } else {
+            System.out.println("");
+        }
+
+        driver.findElement(By.xpath("//a[@href='/online/shop/devices/product-category-accessories/apple-iphone-15-pro-finewoven-case-taupe?offer=epc_simfreedevice00000001_so_jee230921123929324872']")).click();
+
+        JavascriptExecutor jsExecutor2 = (JavascriptExecutor) driver;
+        WebElement buyButton2 = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("button.js-add-to-cart-btn")));
+        jsExecutor2.executeScript("arguments[0].scrollIntoView(true);", buyButton2);
+        jsExecutor2.executeScript("arguments[0].click();", buyButton2);
+
 //        WebElement nextBuy = driver.findElement(By.cssSelector("see-more"));
 //        nextBuy.click();
       //  driver.quit();
