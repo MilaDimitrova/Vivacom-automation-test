@@ -37,8 +37,6 @@ public class DemoAutomation {
         WebElement devices = driver.findElement(By.className("custom-checkbox"));
         devices.click();
 
-        //WebElement element = driver.findElement(By.className("icon-arrow_up"));
-        //element.click();
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
 
@@ -54,27 +52,19 @@ public class DemoAutomation {
         driver.findElement(By.xpath("//a[@href='/online/shop/devices/product-category-smart-mobile-phones/apple-iphone-15-plus-128gb-adapter?offer=epc_emj240105094151989465_so_waw240404165038355262']")).click();
 
 
-//    	WebElement priceButton = driver.findElement(By.className("simple-radio-btns-wrapper-label"));
-//    	priceButton.click();
-//        List<WebElement> price = driver.findElements(By.className("simple-radio-btns-wrapper-span"));
-//        for (WebElement option : price) {
-//            if (option.getText().equals("\r\n"
-//            		+ "										1559.98")) {
-//                option.click();
-//                break;
-//            }
+// dfosd
+//        WebElement subscriptionPlan = driver.findElement(By.id("relatedOfferDiv-epc_bew240105094214030522_so_pvw240404165038210468"));
+//        subscriptionPlan.click();
+//        List<WebElement> planPrice = driver.findElements(By.className("simple-radio-btns-wrapper-label"));
+//        if (!planPrice.isEmpty()) {
+//            WebElement thirdArrowIcon = planPrice.get(0);
+//            thirdArrowIcon.click();
+//        } else {
+//            System.out.println("");
 //        }
 
 
-//    	List<WebElement> priceButton = driver.findElements(By.className("simple-radio-btns-wrapper-with-price"));
-//    	if (color.size() >= 3) {
-//    	    WebElement thirdArrowIcon = color.get(2);
-//    	    thirdArrowIcon.click();
-//    	} else {
-//    	    System.out.println("");
-//    	}
-
-
+       // driver.quit();
 
     }
 
