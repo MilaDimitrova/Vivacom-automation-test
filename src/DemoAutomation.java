@@ -58,8 +58,15 @@ public class DemoAutomation {
 
         WebElement subscriptionPlan = driver.findElement(By.id("relatedOfferDiv-epc_bew240105094214030522_so_pvw240404165038210468"));
         subscriptionPlan.click();
-//        WebElement planPrice = driver.findElement(By.name("relatedOfferCashPriceRadioInputName"));
-//        planPrice.click();
+
+//        List<WebElement> priceButtons = driver.findElements(By.className("class-for-price-buttons"));
+//        for (WebElement button : priceButtons) {
+//            if (button.getText().contains("1559.98")) {
+//                button.click();
+//                break;
+//            }
+//        }
+
         WebElement withoutClientPlan = driver.findElement(By.id("xSellBtn"));
         withoutClientPlan.click();
 
