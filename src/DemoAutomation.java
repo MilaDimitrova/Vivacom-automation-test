@@ -156,6 +156,20 @@ public class DemoAutomation {
 //        removePhoneFromBasket.click();
 
 
+        // Верификация на съобщение
+//        WebElement messageElement = driver.findElement(By.xpath("//*[contains(text(), 'Вижте актуалните ни оферти')]"));
+//        String messageText = messageElement.getText();
+//        String expectedText = "Вижте актуалните ни оферти и изберете най-подходящата за вас. Ако искате да разгледате предходно добавени продукти, натиснете \"Вход\".";
+//
+//        if(messageText.contains(expectedText)) {
+//            System.out.println("The message is displayed correctly.");
+//        } else {
+//            System.out.println("The message is NOT displayed correctly.");
+//        }
+
+
+
+        //Изключване на google chrome след успешно преминал тест
       //  driver.quit();
 
     }
