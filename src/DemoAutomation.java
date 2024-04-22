@@ -1,36 +1,30 @@
-import org.openqa.selenium.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.TimeoutException;
 import java.math.BigDecimal;
-
-
-import java.text.NumberFormat;
 import java.time.Duration;
 import java.util.List;
-import java.util.Locale;
+
 
 import static org.openqa.selenium.By.className;
 
 public class DemoAutomation {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
 
         ChromeDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        driver.manage().window().maximize(); // Maximaze-ваме прозореца преди да отворим url-a
 
-        driver.get("http://vivacom.bg/bg");
+        driver.get("http://vivacom.bg/bg"); // url-a, в случая сайта на Vivacom
 
         WebElement cookieButton = driver.findElement(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"));
-        cookieButton.click();
+        cookieButton.click(); // "Приемаме" бисквитките
 
+        Thread.sleep(2000); // Изчакваме 2 секунди до следващата стъпка
 
         WebElement dropdownToggle = driver.findElement(className("dropdown-toggle"));
         dropdownToggle.click();
@@ -40,31 +34,21 @@ public class DemoAutomation {
                 option.click();
                 break;
             }
-        }
+        }   // от менюто селектираме "Устройства"
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Thread.sleep(2000); // Изчакваме 2 секунди до следващата стъпка
 
 
         driver.findElement(By.xpath("//a[@href='/online/bg/shop/devices/listing?navigation=product-category-smart-mobile-phones']")).click();
+        // Избираме от падащото меню - "Мобилни телефони"
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Thread.sleep(2000); //Изчакваме 2 секунди до следващата стъпка
+
 
         WebElement devices = driver.findElement(className("custom-checkbox"));
         devices.click();
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Thread.sleep(2000);
 
         List<WebElement> color = driver.findElements(className("custom-checkbox"));
         if (color.size() >= 15) {
@@ -74,36 +58,22 @@ public class DemoAutomation {
             System.out.println("");
         }
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Thread.sleep(2000);
 
         driver.findElement(By.xpath("//a[@href='/online/shop/devices/product-category-smart-mobile-phones/apple-iphone-15-plus-128gb-adapter?offer=epc_emj240105094151989465_so_waw240404165038355262']")).click();
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Thread.sleep(2000);
 
         WebElement subscriptionPlan = driver.findElement(By.id("relatedOfferDiv-epc_bew240105094214030522_so_pvw240404165038210468"));
         subscriptionPlan.click();
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Thread.sleep(2000);
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         String radioButtonXpath = "//label[.//span[contains(text(), '1559.98')]]//input[@type='radio']";
 
         try {
             WebElement radioButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(radioButtonXpath)));
-
-            // Scroll into view and click using JavaScript
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", radioButton);
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", radioButton);
 
@@ -113,21 +83,13 @@ public class DemoAutomation {
             e.printStackTrace();
         }
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Thread.sleep(2000);
 
         WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(20));
         WebElement clientWithoutVivacom = wait2.until(ExpectedConditions.elementToBeClickable(By.id("xSellBtn")));
         clientWithoutVivacom.click();
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Thread.sleep(2000);
 
 
         WebDriverWait wait3 = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -138,20 +100,12 @@ public class DemoAutomation {
 
         // verifikaciq che sme w koshnicata
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Thread.sleep(2000);
 
         WebElement continueShoppingButton = wait2.until(ExpectedConditions.elementToBeClickable(By.name("vivacom-cart-link-button-continue-shopping")));
         continueShoppingButton.click();
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Thread.sleep(2000);
 
         WebElement dropdownToggle2 = driver.findElement(className("dropdown-toggle"));
         dropdownToggle2.click();
@@ -163,19 +117,10 @@ public class DemoAutomation {
             }
         }
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
+        Thread.sleep(2000);
         driver.findElement(By.xpath("//a[@href='/online/bg/shop/devices/listing?navigation=product-category-accessories']")).click();
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Thread.sleep(2000);
 
 
         List<WebElement> optionIphone = driver.findElements(className("custom-checkbox"));
@@ -186,12 +131,7 @@ public class DemoAutomation {
             System.out.println("");
         }
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
+        Thread.sleep(2000);
 
         List<WebElement> upperPriceAccesories = driver.findElements(className("custom-checkbox"));
         if (upperPriceAccesories.size() >= 14) {
@@ -201,20 +141,11 @@ public class DemoAutomation {
             System.out.println("");
         }
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Thread.sleep(2000);
 
         driver.findElement(By.xpath("//a[@href='/online/shop/devices/product-category-accessories/apple-iphone-15-pro-finewoven-case-taupe?offer=epc_simfreedevice00000001_so_jee230921123929324872']")).click();
 
-
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Thread.sleep(2000);
 
 
         JavascriptExecutor jsExecutor2 = (JavascriptExecutor) driver;
@@ -222,11 +153,7 @@ public class DemoAutomation {
         jsExecutor2.executeScript("arguments[0].scrollIntoView(true);", buyButton2);
         jsExecutor2.executeScript("arguments[0].click();", buyButton2);
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Thread.sleep(2000);
         //verifikaciq che sme v koshnicata
 
         try {
@@ -250,11 +177,7 @@ public class DemoAutomation {
 
 
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Thread.sleep(2000);
         //верификация, че бутоните за поръчай като настоящ и нов клиент са неактивни
 
         WebDriverWait waitButtonForVerification = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -264,11 +187,7 @@ public class DemoAutomation {
 //
 
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Thread.sleep(2000);
         //обши условия
 
 
@@ -287,14 +206,14 @@ public class DemoAutomation {
         // Proceed with additional actions here
 
 
-
+        Thread.sleep(2000);
 
         //Премахване на телефона от кошницата
 
         WebElement removeButton = driver.findElement(By.cssSelector("button[type='submit'][class*='btn-close']"));
         removeButton.click();
         System.out.println("Item removed");
-
+        Thread.sleep(2000);
 
         // Верификация на съобщение
         try {
