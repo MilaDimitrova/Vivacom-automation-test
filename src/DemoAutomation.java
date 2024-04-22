@@ -297,7 +297,25 @@ public class DemoAutomation {
 
 
         // Верификация на съобщение
+        try {
+            // Wait for the element that contains the message to be present
+            WebDriverWait wait4 = new WebDriverWait(driver, Duration.ofSeconds(100));
+            WebElement messageElement = wait4.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//*[contains(., 'В момента кошницата ви е празна')]"))
+            );
 
+            // Retrieve the full text content from the element
+            String messageText = messageElement.getText();
+            String expectedMessage = "Вижте актуалните ни оферти и изберете най-подходящата за вас. Ако искате да разгледате предходно добавени продукти, натиснете \"Вход\".";
+
+            if (messageText.contains(expectedMessage)) {
+                System.out.println("The message is verified and correct.");
+            } else {
+                System.out.println("The message does not match the expected text.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
 
