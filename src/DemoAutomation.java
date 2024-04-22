@@ -11,10 +11,12 @@ import org.openqa.selenium.TimeoutException;
 import java.math.BigDecimal;
 
 
-
-
+import java.text.NumberFormat;
 import java.time.Duration;
 import java.util.List;
+import java.util.Locale;
+
+import static org.openqa.selenium.By.className;
 
 public class DemoAutomation {
 
@@ -30,9 +32,9 @@ public class DemoAutomation {
         cookieButton.click();
 
 
-        WebElement dropdownToggle = driver.findElement(By.className("dropdown-toggle"));
+        WebElement dropdownToggle = driver.findElement(className("dropdown-toggle"));
         dropdownToggle.click();
-        List<WebElement> options = driver.findElements(By.className("dropdown"));
+        List<WebElement> options = driver.findElements(className("dropdown"));
         for (WebElement option : options) {
             if (option.getText().equals("Устройства")) {
                 option.click();
@@ -41,7 +43,7 @@ public class DemoAutomation {
         }
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -50,21 +52,21 @@ public class DemoAutomation {
         driver.findElement(By.xpath("//a[@href='/online/bg/shop/devices/listing?navigation=product-category-smart-mobile-phones']")).click();
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
 
-        WebElement devices = driver.findElement(By.className("custom-checkbox"));
+        WebElement devices = driver.findElement(className("custom-checkbox"));
         devices.click();
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
 
-        List<WebElement> color = driver.findElements(By.className("custom-checkbox"));
+        List<WebElement> color = driver.findElements(className("custom-checkbox"));
         if (color.size() >= 15) {
             WebElement thirdArrowIcon = color.get(14);
             thirdArrowIcon.click();
@@ -73,7 +75,7 @@ public class DemoAutomation {
         }
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -81,7 +83,7 @@ public class DemoAutomation {
         driver.findElement(By.xpath("//a[@href='/online/shop/devices/product-category-smart-mobile-phones/apple-iphone-15-plus-128gb-adapter?offer=epc_emj240105094151989465_so_waw240404165038355262']")).click();
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -90,7 +92,7 @@ public class DemoAutomation {
         subscriptionPlan.click();
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -112,7 +114,7 @@ public class DemoAutomation {
         }
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -122,7 +124,7 @@ public class DemoAutomation {
         clientWithoutVivacom.click();
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -137,7 +139,7 @@ public class DemoAutomation {
         // verifikaciq che sme w koshnicata
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -146,14 +148,14 @@ public class DemoAutomation {
         continueShoppingButton.click();
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
 
-        WebElement dropdownToggle2 = driver.findElement(By.className("dropdown-toggle"));
+        WebElement dropdownToggle2 = driver.findElement(className("dropdown-toggle"));
         dropdownToggle2.click();
-        List<WebElement> options2 = driver.findElements(By.className("dropdown"));
+        List<WebElement> options2 = driver.findElements(className("dropdown"));
         for (WebElement option : options2) {
             if (option.getText().equals("Устройства")) {
                 option.click();
@@ -162,7 +164,7 @@ public class DemoAutomation {
         }
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -170,13 +172,13 @@ public class DemoAutomation {
         driver.findElement(By.xpath("//a[@href='/online/bg/shop/devices/listing?navigation=product-category-accessories']")).click();
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
 
 
-        List<WebElement> optionIphone = driver.findElements(By.className("custom-checkbox"));
+        List<WebElement> optionIphone = driver.findElements(className("custom-checkbox"));
         if (optionIphone.size() >= 2) {
             WebElement thirdArrowIcon = optionIphone.get(1);
             thirdArrowIcon.click();
@@ -185,13 +187,13 @@ public class DemoAutomation {
         }
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
 
 
-        List<WebElement> upperPriceAccesories = driver.findElements(By.className("custom-checkbox"));
+        List<WebElement> upperPriceAccesories = driver.findElements(className("custom-checkbox"));
         if (upperPriceAccesories.size() >= 14) {
             WebElement thirdArrowIcon = upperPriceAccesories.get(13);
             thirdArrowIcon.click();
@@ -200,7 +202,7 @@ public class DemoAutomation {
         }
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -209,7 +211,7 @@ public class DemoAutomation {
 
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -220,16 +222,38 @@ public class DemoAutomation {
         jsExecutor2.executeScript("arguments[0].scrollIntoView(true);", buyButton2);
         jsExecutor2.executeScript("arguments[0].click();", buyButton2);
 
-
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         //verifikaciq che sme v koshnicata
+        // Ensure we are on the shopping cart page
+        try {
 
 
-        // проверка, ако се надвишава 1680 лв.
+            WebElement totalPriceElement = driver.findElement(By.cssSelector(".summarize-order .final-price .e-care-home-big-bill-price-digits"));
+            String totalPriceText = totalPriceElement.getText().trim();
+            totalPriceText = totalPriceText.replaceAll("[^\\d,]+", "").replace(",", ".");
+            BigDecimal totalPrice = new BigDecimal(totalPriceText);
+            BigDecimal limit = new BigDecimal("1680");
+            if (totalPrice.compareTo(limit) > 0) {
+                WebElement removeButton = driver.findElement(By.cssSelector("button[type='submit'][class*='btn-close']"));
+                removeButton.click();
+                System.out.println("Item removed");
+            } else {
+                System.out.println("No need to remove the item");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
 
 
-    //верификация, че бутоните за поръчай като настоящ и нов клиент са неактивни
+
+
+        //верификация, че бутоните за поръчай като настоящ и нов клиент са неактивни
 
 //        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 //        WebElement checkoutButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("button.js-checkout-btn")));
