@@ -228,7 +228,7 @@ public class DemoAutomation {
             throw new RuntimeException(e);
         }
         //verifikaciq che sme v koshnicata
-        // Ensure we are on the shopping cart page
+
         try {
 
 
@@ -250,39 +250,54 @@ public class DemoAutomation {
 
 
 
-
-
-
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         //верификация, че бутоните за поръчай като настоящ и нов клиент са неактивни
 
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//        WebElement checkoutButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("button.js-checkout-btn")));
-//        boolean isDisabled = checkoutButton.getAttribute("class").contains("disable-elm") || checkoutButton.getAttribute("disabled") != null;
-//        System.out.println("The checkout button is disabled: " + isDisabled);
+        WebDriverWait waitButtonForVerification = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement checkoutButton = waitButtonForVerification.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("button.js-checkout-btn")));
+        boolean isDisabled = checkoutButton.getAttribute("class").contains("disable-elm") || checkoutButton.getAttribute("disabled") != null;
+        System.out.println("The checkout button is disabled: " + isDisabled);
 //
 
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         //обши условия
 
-//        WebElement termes = driver.findElement(By.className("vivacom-icon icon-box_empty"));
-//        termes.click();
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        try {
+            // Using WebDriverWait to wait for the checkbox to be present and clickable
+            WebDriverWait wait22 = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement termsCheckboxIcon = wait22.until(ExpectedConditions.elementToBeClickable(By.cssSelector("em.vivacom-icon.icon-box_empty")));
+            js.executeScript("arguments[0].scrollIntoView(true);", termsCheckboxIcon);
+            termsCheckboxIcon.click();
+            System.out.println("Terms and conditions checkbox has been clicked.");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        // Proceed with additional actions here
+
+
 
 
         //Премахване на телефона от кошницата
 
-//        WebElement removePhoneFromBasket = driver.findElement(By.className("vivacom-icons icon-close_x"));
-//        removePhoneFromBasket.click();
+        WebElement removeButton = driver.findElement(By.cssSelector("button[type='submit'][class*='btn-close']"));
+        removeButton.click();
+        System.out.println("Item removed");
 
 
         // Верификация на съобщение
-//        WebElement messageElement = driver.findElement(By.xpath("//*[contains(text(), 'Вижте актуалните ни оферти')]"));
-//        String messageText = messageElement.getText();
-//        String expectedText = "Вижте актуалните ни оферти и изберете най-подходящата за вас. Ако искате да разгледате предходно добавени продукти, натиснете \"Вход\".";
-//
-//        if(messageText.contains(expectedText)) {
-//            System.out.println("The message is displayed correctly.");
-//        } else {
-//            System.out.println("The message is NOT displayed correctly.");
-//        }
+
 
 
 
